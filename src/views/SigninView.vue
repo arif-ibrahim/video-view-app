@@ -2,22 +2,30 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "vue-router";
+
 
 const router = useRouter()
 const email = ref('')
 const password = ref('')
 const errorMsg = ref('')
 
+const redirectPage = () => {
+    if (localStorage.getItem('videoId')) {
+        router.push({ name: 'detailview', params: { id: localStorage.getItem('videoId') } })
+
+    } else {
+        router.push('/')
+    }
+}
 
 const register = () => {
     const auth = getAuth()
     signInWithEmailAndPassword(auth, email.value, password.value).then((data) => {
         console.log('Successfully Signed In...');
         console.log(auth.currentUser);
-
-        router.push({name: 'detailview', params: {id: localStorage.getItem('videoId')}})
+        redirectPage()
 
     }).catch((error) => {
         console.log(error.code);
@@ -40,9 +48,15 @@ const register = () => {
     })
 }
 
-
 const signInWithGoogle = () => {
-    console.log('Signing in with Google');
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(getAuth(), provider).then((result) => {
+        console.log(result.user);
+        redirectPage()
+    }).catch((error) => {
+        console.log(error);
+
+    })
 }
 
 </script>
@@ -83,4 +97,5 @@ const signInWithGoogle = () => {
             </div>
 
         </div>
-</div></template>
+    </div>
+</template>
