@@ -5,7 +5,7 @@ import App from './App.vue'
 import './style.css'
 import router from './router'
 import { initializeApp } from "firebase/app";
-import Vue3Toasity, { type ToastContainerOptions } from 'vue3-toastify';
+import Vue3Toastify, { type ToastContainerOptions } from 'vue3-toastify';
 import 'vue3-toastify/dist/index.css';
 
 
@@ -26,7 +26,7 @@ const app = createApp(App)
 app.use(createPinia())
 app.use(router)
 app.use(
-  Vue3Toasity,
+  Vue3Toastify,
   {
     autoClose: 9000,
   } as ToastContainerOptions,

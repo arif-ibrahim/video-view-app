@@ -68,6 +68,7 @@ const signInWithGoogle = () => {
             <button @click="register" class="bg-blue-500 text-white py-2 px-4 rounded-md w-full">
                 Register
             </button>
+            <div class="mt-2 flex gap-1"><div>Already have an account?</div> <RouterLink class="p-0 hover:text-blue-600 hover:bg-white" to="/signin">SIGN IN</RouterLink></div>
         </div>
     </div>
 </template>
