@@ -53,8 +53,9 @@ router.beforeEach(async(to, from, next) => {
     if(await getCurrentUser()){
       next()
     }else{
+      localStorage.setItem('videoId', to.params.id[0])
       toast("you don't have access to view this video",)
-      next("/register")
+      next("/signin")
     }
   }else{
     next()

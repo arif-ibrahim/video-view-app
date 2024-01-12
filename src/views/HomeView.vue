@@ -14,15 +14,15 @@ const videoList = useVideoStore()
         <div class="">
           <img class=" object-cover" :src="video.thumbnail" alt="">
         </div>
-        <RouterLink :to="{name: 'detailview', params: {id: video.id}}"><button class="bg-gray-100 hover:bg-gray-400 hover:text-gray-100 w-full">watch</button></RouterLink>
-        
+        <RouterLink :to="{ name: 'detailview', params: { id: video.id } }"><button
+            class="bg-gray-100 hover:bg-gray-400 hover:text-gray-100 w-full">watch</button></RouterLink>
+
       </div>
-  </div>
+    </div>
   </div>
 </template>
 <style scoped>
 a {
-    padding: 0px;
+  padding: 0px;
 }
-
 </style>
