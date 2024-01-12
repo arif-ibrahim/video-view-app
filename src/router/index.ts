@@ -1,6 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { toast, type ToastOptions } from 'vue3-toastify';
+ 
  
 
 const router = createRouter({
@@ -51,7 +53,7 @@ router.beforeEach(async(to, from, next) => {
     if(await getCurrentUser()){
       next()
     }else{
-      alert(`you don't have access to view this video`)
+      toast("you don't have access to view this video",)
       next("/register")
     }
   }else{
