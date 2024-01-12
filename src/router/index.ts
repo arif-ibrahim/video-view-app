@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import { toast, type ToastOptions } from 'vue3-toastify';
- 
- 
+import { setVideoToLocalStorage, removeVideoFromLocalStorage } from "@/composables/useLocalStorage";
+import HomeView from '../views/HomeView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,17 +48,17 @@ const getCurrentUser = () => {
   })
 }
 
-router.beforeEach(async(to, from, next) => {
-  if(to.matched.some((record) => record.meta.requiresAuth)){
-    if(await getCurrentUser()){
-      localStorage.removeItem('videoId')
+router.beforeEach(async (to, from, next) => {
+  if (to.matched.some((record) => record.meta.requiresAuth)) {
+    if (await getCurrentUser()) {
+      removeVideoFromLocalStorage()
       next()
-    }else{
-      localStorage.setItem('videoId', to.params.id[0])
+    } else {
+      setVideoToLocalStorage(to.params.id[0])
       toast("you don't have access to view this video",)
       next("/signin")
     }
-  }else{
+  } else {
     next()
   }
 

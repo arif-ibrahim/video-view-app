@@ -13,14 +13,14 @@ const selectedVideo = getVideoById.value(route.params.id)
 </script>
 
 <template>
-   <div class="flex flex-col gap-5">
-    <div>
-        <HomeButton />
+    <div class="flex flex-col gap-5">
+        <div>
+            <HomeButton />
+        </div>
+        <video width="620" controls :poster="selectedVideo?.thumbnail">
+            <source :src="selectedVideo?.src" type="video/ogg" />
+        </video>
     </div>
-    <video width="620" controls :poster="selectedVideo?.thumbnail">
-        <source :src="selectedVideo?.src" type="video/ogg" />
-    </video>
-   </div>
 </template>
   
 <style scoped></style>

@@ -1,9 +1,8 @@
-
-
 <script setup lang="ts">
 import { ref } from 'vue';
-import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { useRouter } from "vue-router";
+import { getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import { getVideoFromLocalStorage } from "@/composables/useLocalStorage";
 
 
 const router = useRouter()
@@ -12,8 +11,8 @@ const password = ref('')
 const errorMsg = ref('')
 
 const redirectPage = () => {
-    if (localStorage.getItem('videoId')) {
-        router.push({ name: 'detailview', params: { id: localStorage.getItem('videoId') } })
+    if (getVideoFromLocalStorage()) {
+        router.push({ name: 'detailview', params: { id: getVideoFromLocalStorage() } })
 
     } else {
         router.push('/')

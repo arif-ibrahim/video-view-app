@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router'
 import { useVideoStore } from '@/stores/video'
 
+
 const videoList = useVideoStore()
 
 </script>
