@@ -10,6 +10,7 @@ const route = useRoute()
 const videoStore = useVideoStore()
 const { getVideoById } = storeToRefs(videoStore)
 const selectedVideo = getVideoById.value(route.params.id)
+
 </script>
 
 <template>

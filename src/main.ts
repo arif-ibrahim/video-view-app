@@ -1,5 +1,5 @@
-import './assets/main.css'
 import { createApp } from 'vue'
+import './assets/main.css'
 import { createPinia } from 'pinia'
 import App from './App.vue'
 import './style.css'
@@ -11,15 +11,15 @@ import 'vue3-toastify/dist/index.css';
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDbFPyU5svVIQsL8pdUAvGjJ9kX_duUH7I",
-    authDomain: "video-view-app-84068.firebaseapp.com",
-    projectId: "video-view-app-84068",
-    storageBucket: "video-view-app-84068.appspot.com",
-    messagingSenderId: "57333670741",
-    appId: "1:57333670741:web:93a2074ec162fa4e8445dc"
-  };
+  apiKey: "AIzaSyDbFPyU5svVIQsL8pdUAvGjJ9kX_duUH7I",
+  authDomain: "video-view-app-84068.firebaseapp.com",
+  projectId: "video-view-app-84068",
+  storageBucket: "video-view-app-84068.appspot.com",
+  messagingSenderId: "57333670741",
+  appId: "1:57333670741:web:93a2074ec162fa4e8445dc"
+};
 
-  initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
 
 const app = createApp(App)
 
